@@ -5,10 +5,15 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint src/**/*.ts",
-    "format": "eslint src/**/*.ts --fix"
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "prepare": "husky install"
   },
   "keywords": [],
-  "author": "",
+  "author": {
+    "email": "matheuslanduci@gmail.com",
+    "name": "Matheus Landuci",
+    "url": "https://matheuslanduci.com"
+  },
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^17.0.23",
@@ -16,6 +21,8 @@
     "@typescript-eslint/parser": "^5.17.0",
     "eslint": "^8.12.0",
     "git-commit-msg-linter": "^4.1.1",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
     "prettier": "^2.6.1",
     "typescript": "^4.6.3"
   }
