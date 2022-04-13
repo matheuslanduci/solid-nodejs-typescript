@@ -178,7 +178,7 @@ describe('SignUp Controller', () => {
     expect(httpResponse.body).toEqual(new ServerError())
   })
 
-  it('Should return 400 if password confirmation fails', () => {
+  test('Should return 400 if password confirmation fails', () => {
     const { sut } = makeSut()
 
     const httpRequest = {
@@ -196,7 +196,7 @@ describe('SignUp Controller', () => {
     expect(httpResponse.body).toEqual(new InvalidParamError('passwordConfirmation'))
   })
 
-  it('Should call AddAccount with correct values', () => {
+  test('Should call AddAccount with correct values', () => {
     const { sut, addAccountStub } = makeSut()
 
     const addAccountSpy = jest.spyOn(addAccountStub, 'add')
@@ -219,7 +219,7 @@ describe('SignUp Controller', () => {
     })
   })
 
-  it('Should return 500 if AddAccount throws an exception', () => {
+  test('Should return 500 if AddAccount throws an exception', () => {
     const { sut, addAccountStub } = makeSut()
 
     jest.spyOn(addAccountStub, 'add').mockImplementationOnce(() => {
