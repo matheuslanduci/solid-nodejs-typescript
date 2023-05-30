@@ -11,7 +11,7 @@ export class MongoHelper {
     await this.client.close()
   }
 
-  static getCollection(name: string): Collection {
-    return this.client.db().collection(name)
+  static getCollection<T = any>(name: string): Collection<T> {
+    return this.client.db().collection<T>(name)
   }
 }
