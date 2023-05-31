@@ -14,4 +14,10 @@ export class MongoHelper {
   static getCollection<T = any>(name: string): Collection<T> {
     return this.client.db().collection<T>(name)
   }
+
+  static map<T = any>(data: any): T {
+    const { _id, ...documentWithoutId } = data
+
+    return { id: _id, ...documentWithoutId }
+  }
 }
