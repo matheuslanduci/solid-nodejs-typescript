@@ -2,16 +2,23 @@ import { MongoClient, Collection } from 'mongodb'
 
 export class MongoHelper {
   static client: MongoClient
+  static uri: string
 
   static async connect(uri: string): Promise<void> {
     this.client = await MongoClient.connect(uri)
+    this.uri = uri
   }
 
   static async disconnect() {
     await this.client.close()
+    this.client = null
   }
 
-  static getCollection<T = any>(name: string): Collection<T> {
+  static async getCollection<T = any>(name: string): Promise<Collection<T>> {
+    if (!this.client) {
+      await this.connect(this.uri)
+    }    
+
     return this.client.db().collection<T>(name)
   }
 
